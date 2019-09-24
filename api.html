@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>api 연습</title>
+</head>
+
+
+<body>
+    <h1>내사이트 </h1>
+    <p></p>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+
+  <script>
+  $.ajax({
+  method: "GET",
+  url: "https://dapi.kakao.com/v2/search/web",
+  data: { query: "미움받을 용기" },
+  headers: {Authorization: "KakaoAK 8713b48a1299b71825face71c3a99d7e"}
+})
+  .done(function( msg ) {
+    console.log(msg.documents[0].title);
+    console.log(msg.documents[0].contents);
+    $( "p" ).append( "<strong>"+msg.documents[0].title+"</strong>" );
+    $( "p" ).append( "<strong>"+msg.documents[0].contents+"</strong>" );
+  });
+  </script>
+</body>
+</html>
